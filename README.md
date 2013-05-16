@@ -12,10 +12,10 @@ If you find a but, please report it [on Gitgub!](https://github.com/jurgelenas/r
 
 ## Developer
 
-Developed by [Julius Jurgelenas](http://julius.jurgelenas.lt)
+Developed by [Julius Jurgelėnas](http://julius.jurgelenas.lt)
 
-+ [@jurgelenas](http://twitter.com/jurgelenas)
-+ [Github Profile](http://github.com/jurgelenas)
+* [@jurgelenas](http://twitter.com/jurgelenas)
+* [Github Profile](http://github.com/jurgelenas)
 
 
 ## License
