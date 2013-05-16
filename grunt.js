@@ -1,6 +1,6 @@
 /*global module:false*/
-module.exports = function(grunt) { 
-  // Project configuration.
+module.exports = function(grunt) {
+
   grunt.initConfig({
     pkg : '<json:package.json>',
     meta : {
