@@ -18,11 +18,11 @@ There are many other different plugins to do this job, but I couldn't find anyth
 
 ## Usage
 
-1. Grab minified plugin version from `js/jQuery.responsiveMenu.min.js`
+1. Grab minified plugin version from `dist/jQuery.responsiveMenu.min.js`
 2. Put it into the `<head>`
 
 	```
-	<script src="js/jQuery.responsiveMenu.min.js"></script>
+	<script src="path/to/jQuery.responsiveMenu.min.js"></script>
 	```
 
 3. Add markup:
