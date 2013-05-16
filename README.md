@@ -21,13 +21,13 @@ There are many other different plugins to do this job, but I couldn't find anyth
 1. Grab minified plugin version from `dist/jQuery.responsiveMenu.min.js`
 2. Put it into the `<head>`
 
-	```
+	```html
 	<script src="path/to/jQuery.responsiveMenu.min.js"></script>
 	```
 
 3. Add markup:
 
-	```
+	```html
 	<ul id="regular-menu">
 	  <li><a href="/one">One</a></li>
 	  <li class="current"><a href="/two">Two</a></li>
@@ -43,7 +43,7 @@ There are many other different plugins to do this job, but I couldn't find anyth
 	```
 4. Instantiate plugin:
 
-	```
+	```html
 	<script>
 		$(function () {
 			$("#regular-menu").responsiveMenu({
@@ -81,7 +81,7 @@ There are many other different plugins to do this job, but I couldn't find anyth
 
 * manualMediaQueries - (type: boolean) If set to true, you will need to manually toggle between regular and select menus, for example:
 
-	```
+	```css
 	/* desktop */
 	.responsive-select-menu { display: none }
 
