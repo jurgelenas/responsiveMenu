@@ -8,7 +8,7 @@
     "email" : "julius@jurgelenas.lt",
     "url"   : "http://julius.jurgelenas.lt"
   },
-  "description" : "",
+  "description" : "A responsive navigation jQuery plugin",
   "keywords": ["responsive menu", "responsive", "javascript", "jquery plugin", "menu"],
   "repository" : {
     "type" : "git",
