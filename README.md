@@ -54,6 +54,7 @@ There are many other different plugins to do this job, but I couldn't find anyth
 				visualTab: "--",
 				maxDepth: null,
 				manualMediaQueries: false,
+				label: null,
 				selectors: {
 				  menuElement: 'li',
 				  menuAnchor: '> a',
@@ -101,6 +102,8 @@ There are many other different plugins to do this job, but I couldn't find anyth
 	---- Subchild
 	---- Subchild
 	```
+
+* label - (type: string) sets the label text for the select (if not set, no label will be added)
 
 * selectors - if you have a different html structure, you can set custom jQuery selectors:
 	* menuElement: 'li'
