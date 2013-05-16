@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     uglify: {
       responsiveMenu: {
         files: {
-          'js/jQuery.responsiveMenu.min.js': ['dist/jQuery.responsiveMenu.js'],
+          'dist/jQuery.responsiveMenu.min.js': ['dist/jQuery.responsiveMenu.js'],
         },
         options: {
           banner : '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
