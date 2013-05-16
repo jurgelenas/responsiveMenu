@@ -33,7 +33,7 @@ describe "jQuery.responsiveMenu", ->
       expect(@one.responsiveMenu()).toBe(@one)
 
     it "should offer default values", ->
-      plugin = @one.responsiveMenu().data("plugin_responsiveMenu")
+      plugin = @one.responsiveMenu().data("responsiveMenu")
 
       expect(plugin.defaults).toBeDefined()
 
@@ -45,7 +45,7 @@ describe "jQuery.responsiveMenu", ->
         visualTab: "+"
         manualMediaQueries: true
 
-      plugin = @one.responsiveMenu(options).data("plugin_responsiveMenu")
+      plugin = @one.responsiveMenu(options).data("responsiveMenu")
 
       expect(plugin.options.switchWidth).toBe(options.switchWidth)
       expect(plugin.options.currentClass).toBe(options.currentClass)
@@ -57,7 +57,7 @@ describe "jQuery.responsiveMenu", ->
   describe "manualMediaQueries", ->
     describe "when it is set to false", ->
       beforeEach ->
-        @plugin = @one.responsiveMenu(@options).data("plugin_responsiveMenu")
+        @plugin = @one.responsiveMenu(@options).data("responsiveMenu")
 
       it "should trigger onResize method", ->
         spyOn(@plugin, 'onResize')
@@ -91,7 +91,7 @@ describe "jQuery.responsiveMenu", ->
         options =
           appendTo: "#dummy"
           manualMediaQueries: true
-        @plugin = @one.responsiveMenu(options).data("plugin_responsiveMenu")
+        @plugin = @one.responsiveMenu(options).data("responsiveMenu")
 
       it "shouldn't change visibility of menus", ->
         spyOn(@plugin, 'onResize')
@@ -108,7 +108,7 @@ describe "jQuery.responsiveMenu", ->
         '<option value="#three">Three</option>'+
         '<option value="#four">Four</option></select>'
 
-      a = @one.responsiveMenu(@options).data("plugin_responsiveMenu")
+      a = @one.responsiveMenu(@options).data("responsiveMenu")
 
       generatedHtml = a.select.parent().html()
 
@@ -124,7 +124,7 @@ describe "jQuery.responsiveMenu", ->
         '<option value="#three">Three</option>'+
         '<option value="#four">Four</option></select>'
 
-      generatedHtml = @withCurrent.responsiveMenu(@options).data("plugin_responsiveMenu").select.parent().html()
+      generatedHtml = @withCurrent.responsiveMenu(@options).data("responsiveMenu").select.parent().html()
 
       expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated)
 
@@ -148,7 +148,7 @@ describe "jQuery.responsiveMenu", ->
         '<option value="#four">Four</option>'+
         '</select>'
 
-      generatedHtml = @multi.responsiveMenu(@options).data("plugin_responsiveMenu").select.parent().html()
+      generatedHtml = @multi.responsiveMenu(@options).data("responsiveMenu").select.parent().html()
 
       expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated)
 
@@ -163,6 +163,6 @@ describe "jQuery.responsiveMenu", ->
         '<option value="#four">Four</option>'+
         '</select>'
       
-      generatedHtml = @multiWithCurrent.responsiveMenu(@options).data("plugin_responsiveMenu").select.parent().html()
+      generatedHtml = @multiWithCurrent.responsiveMenu(@options).data("responsiveMenu").select.parent().html()
 
       expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated)     

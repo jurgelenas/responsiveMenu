@@ -36,7 +36,7 @@ describe("jQuery.responsiveMenu", function() {
     });
     it("should offer default values", function() {
       var plugin;
-      plugin = this.one.responsiveMenu().data("plugin_responsiveMenu");
+      plugin = this.one.responsiveMenu().data("responsiveMenu");
       return expect(plugin.defaults).toBeDefined();
     });
     return it("should overwrite the defaults", function() {
@@ -48,7 +48,7 @@ describe("jQuery.responsiveMenu", function() {
         visualTab: "+",
         manualMediaQueries: true
       };
-      plugin = this.one.responsiveMenu(options).data("plugin_responsiveMenu");
+      plugin = this.one.responsiveMenu(options).data("responsiveMenu");
       expect(plugin.options.switchWidth).toBe(options.switchWidth);
       expect(plugin.options.currentClass).toBe(options.currentClass);
       expect(plugin.options.appendTo).toBe(options.appendTo);
@@ -59,7 +59,7 @@ describe("jQuery.responsiveMenu", function() {
   describe("manualMediaQueries", function() {
     describe("when it is set to false", function() {
       beforeEach(function() {
-        return this.plugin = this.one.responsiveMenu(this.options).data("plugin_responsiveMenu");
+        return this.plugin = this.one.responsiveMenu(this.options).data("responsiveMenu");
       });
       it("should trigger onResize method", function() {
         spyOn(this.plugin, 'onResize');
@@ -96,7 +96,7 @@ describe("jQuery.responsiveMenu", function() {
           appendTo: "#dummy",
           manualMediaQueries: true
         };
-        return this.plugin = this.one.responsiveMenu(options).data("plugin_responsiveMenu");
+        return this.plugin = this.one.responsiveMenu(options).data("responsiveMenu");
       });
       return it("shouldn't change visibility of menus", function() {
         spyOn(this.plugin, 'onResize');
@@ -109,7 +109,7 @@ describe("jQuery.responsiveMenu", function() {
     it("should generate correct html tree", function() {
       var a, generatedHtml, shouldBeGenerated;
       shouldBeGenerated = '<select class="responsive-select-menu">' + '<option value="#one">One</option><option value="#two">Two</option>' + '<option value="#three">Three</option>' + '<option value="#four">Four</option></select>';
-      a = this.one.responsiveMenu(this.options).data("plugin_responsiveMenu");
+      a = this.one.responsiveMenu(this.options).data("responsiveMenu");
       generatedHtml = a.select.parent().html();
       return expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated);
     });
@@ -118,7 +118,7 @@ describe("jQuery.responsiveMenu", function() {
       loadFixtures('oneLevelMenuWithCurrent.html');
       this.withCurrent = $('#one-level-menu-with-current');
       shouldBeGenerated = '<select class="responsive-select-menu">' + '<option value="#one">One</option>' + '<option value="#two" selected="selected">Two</option>' + '<option value="#three">Three</option>' + '<option value="#four">Four</option></select>';
-      generatedHtml = this.withCurrent.responsiveMenu(this.options).data("plugin_responsiveMenu").select.parent().html();
+      generatedHtml = this.withCurrent.responsiveMenu(this.options).data("responsiveMenu").select.parent().html();
       return expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated);
     });
   });
@@ -132,13 +132,13 @@ describe("jQuery.responsiveMenu", function() {
     it("should generate corrent html tree", function() {
       var generatedHtml, shouldBeGenerated;
       shouldBeGenerated = '<select class="responsive-select-menu">' + '<option value="#one">One</option><option value="#two">Two</option>' + '<option value="#sub-one">--Sub-one</option>' + '<option value="#sub-sub-one">----Sub-Sub-one</option>' + '<option value="#sub-sub-two">----Sub-Sub-two</option>' + '<option value="#sub-two">--Sub-two</option>' + '<option value="#three">Three</option>' + '<option value="#four">Four</option>' + '</select>';
-      generatedHtml = this.multi.responsiveMenu(this.options).data("plugin_responsiveMenu").select.parent().html();
+      generatedHtml = this.multi.responsiveMenu(this.options).data("responsiveMenu").select.parent().html();
       return expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated);
     });
     return it("should correctly set in select menu current page item on multilevel menu", function() {
       var generatedHtml, shouldBeGenerated;
       shouldBeGenerated = '<select class="responsive-select-menu">' + '<option value="#one">One</option><option value="#two">Two</option>' + '<option value="#sub-one">--Sub-one</option>' + '<option value="#sub-sub-one">----Sub-Sub-one</option>' + '<option value="#sub-sub-two" selected="selected">----Sub-Sub-two</option>' + '<option value="#sub-two">--Sub-two</option>' + '<option value="#three">Three</option>' + '<option value="#four">Four</option>' + '</select>';
-      generatedHtml = this.multiWithCurrent.responsiveMenu(this.options).data("plugin_responsiveMenu").select.parent().html();
+      generatedHtml = this.multiWithCurrent.responsiveMenu(this.options).data("responsiveMenu").select.parent().html();
       return expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated);
     });
   });

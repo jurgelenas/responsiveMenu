@@ -1,7 +1,7 @@
 var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
 (function($, window, document) {
-  var ResponsiveMenu, defaults, pluginName;
+  var ResponsiveMenu, defaults;
   defaults = {
     appendTo: null,
     switchWidth: 768,
@@ -118,11 +118,10 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
     return ResponsiveMenu;
 
   })();
-  pluginName = "responsiveMenu";
-  return $.fn[pluginName] = function(options) {
+  return $.fn.responsiveMenu = function(options) {
     return this.each(function() {
-      if (!$.data(this, "plugin_" + pluginName)) {
-        return $.data(this, "plugin_" + pluginName, new ResponsiveMenu(this, options));
+      if (!$.data(this, "responsiveMenu")) {
+        return $.data(this, "responsiveMenu", new ResponsiveMenu(this, options));
       }
     });
   };

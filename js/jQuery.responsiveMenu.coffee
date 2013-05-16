@@ -98,8 +98,7 @@ do ($ = jQuery, window, document) ->
 
   # A really lightweight plugin wrapper around the ResponsiveMenu class,
   # preventing against multiple instantiations
-  pluginName = "responsiveMenu"
-  $.fn[pluginName] = (options) ->
+  $.fn.responsiveMenu = (options) ->
     @each ->
-      if !$.data(this, "plugin_#{pluginName}")
-        $.data(this, "plugin_#{pluginName}", new ResponsiveMenu(this, options))
+      if !$.data(this, "responsiveMenu")
+        $.data(this, "responsiveMenu", new ResponsiveMenu(this, options))
