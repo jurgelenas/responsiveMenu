@@ -44,6 +44,7 @@ describe "jQuery.responsiveMenu", ->
         appendTo: "#here"
         visualTab: "+"
         manualMediaQueries: true
+        label: "Label"
 
       plugin = @one.responsiveMenu(options).data("responsiveMenu")
 
@@ -52,6 +53,7 @@ describe "jQuery.responsiveMenu", ->
       expect(plugin.options.appendTo).toBe(options.appendTo)
       expect(plugin.options.visualTab).toBe(options.visualTab)
       expect(plugin.options.manualMediaQueries).toBe(options.manualMediaQueries)
+      expect(plugin.options.label).toBe(options.label)
 
 
   describe "manualMediaQueries", ->
@@ -166,3 +168,24 @@ describe "jQuery.responsiveMenu", ->
       generatedHtml = @multiWithCurrent.responsiveMenu(@options).data("responsiveMenu").select.parent().html()
 
       expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated)     
+
+  describe "with label set", ->
+    it "should render select with label", ->
+
+      options =
+        switchWidth: 555
+        appendTo: "#dummy"
+        label: "Menu"
+
+      shouldBeGenerated = '<select class="responsive-select-menu">'+
+        '<option value="#no-redirect">Menu</option>'+
+        '<option value="#one">One</option>'+
+        '<option value="#two">Two</option>'+
+        '<option value="#three">Three</option>'+
+        '<option value="#four">Four</option></select>'
+
+      a = @one.responsiveMenu(options).data("responsiveMenu")
+
+      generatedHtml = a.select.parent().html()
+
+      expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated)

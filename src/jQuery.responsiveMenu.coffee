@@ -8,6 +8,7 @@ do ($ = jQuery, window, document) ->
     visualTab: "--"
     maxDepth: null
     manualMediaQueries: false
+    label: null
     selectors:
       menuElement: 'li'
       menuAnchor: '> a'
@@ -42,6 +43,9 @@ do ($ = jQuery, window, document) ->
       menuTree = @generateMenuTree(@element)
       selectOptions = ''
 
+      if @options.label isnt null 
+        selectOptions += @createOption(@options.label, "#no-redirect", false, 0)
+
       addOptionsRecursive = (menuTree, level) =>
         level++
 
@@ -50,7 +54,7 @@ do ($ = jQuery, window, document) ->
 
         $.each menuTree, (index, value) =>
           selectOptions += @createOption(value.title, value.url, value.current, level)
-          addOptionsRecursive(value.subnodes, level)
+          addOptionsRecursive(value.subnodes, level) if value.subnodes isnt undefined
 
       addOptionsRecursive(menuTree, 0)
 
@@ -93,7 +97,7 @@ do ($ = jQuery, window, document) ->
         @element.show()
 
     redirectTo: (url) ->
-      document.location.href = url
+      document.location.href = url if url isnt "#no-redirect"
 
 
   # A really lightweight plugin wrapper around the ResponsiveMenu class,

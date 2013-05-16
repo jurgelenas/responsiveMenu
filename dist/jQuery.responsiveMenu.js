@@ -11,6 +11,7 @@
       visualTab: "--",
       maxDepth: null,
       manualMediaQueries: false,
+      label: null,
       selectors: {
         menuElement: 'li',
         menuAnchor: '> a',
@@ -53,6 +54,9 @@
         $select = $('<select class="responsive-select-menu" />');
         menuTree = this.generateMenuTree(this.element);
         selectOptions = '';
+        if (this.options.label !== null) {
+          selectOptions += this.createOption(this.options.label, "#no-redirect", false, 0);
+        }
         addOptionsRecursive = function(menuTree, level) {
           level++;
           if (_this.options.maxDepth !== null && level > _this.options.maxDepth) {
@@ -60,7 +64,9 @@
           }
           return $.each(menuTree, function(index, value) {
             selectOptions += _this.createOption(value.title, value.url, value.current, level);
-            return addOptionsRecursive(value.subnodes, level);
+            if (value.subnodes !== void 0) {
+              return addOptionsRecursive(value.subnodes, level);
+            }
           });
         };
         addOptionsRecursive(menuTree, 0);
@@ -117,7 +123,9 @@
       };
 
       ResponsiveMenu.prototype.redirectTo = function(url) {
-        return document.location.href = url;
+        if (url !== "#no-redirect") {
+          return document.location.href = url;
+        }
       };
 
       return ResponsiveMenu;

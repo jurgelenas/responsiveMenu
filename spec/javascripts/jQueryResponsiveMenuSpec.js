@@ -50,14 +50,16 @@
           currentClass: "this-is",
           appendTo: "#here",
           visualTab: "+",
-          manualMediaQueries: true
+          manualMediaQueries: true,
+          label: "Label"
         };
         plugin = this.one.responsiveMenu(options).data("responsiveMenu");
         expect(plugin.options.switchWidth).toBe(options.switchWidth);
         expect(plugin.options.currentClass).toBe(options.currentClass);
         expect(plugin.options.appendTo).toBe(options.appendTo);
         expect(plugin.options.visualTab).toBe(options.visualTab);
-        return expect(plugin.options.manualMediaQueries).toBe(options.manualMediaQueries);
+        expect(plugin.options.manualMediaQueries).toBe(options.manualMediaQueries);
+        return expect(plugin.options.label).toBe(options.label);
       });
     });
     describe("manualMediaQueries", function() {
@@ -131,7 +133,7 @@
         return expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated);
       });
     });
-    return describe("with multi-level menu", function() {
+    describe("with multi-level menu", function() {
       beforeEach(function() {
         loadFixtures("multiLevelMenu.html");
         this.multi = $("#multi-level-menu");
@@ -150,6 +152,21 @@
 
         shouldBeGenerated = '<select class="responsive-select-menu">' + '<option value="#one">One</option><option value="#two">Two</option>' + '<option value="#sub-one">--Sub-one</option>' + '<option value="#sub-sub-one">----Sub-Sub-one</option>' + '<option value="#sub-sub-two" selected="selected">----Sub-Sub-two</option>' + '<option value="#sub-two">--Sub-two</option>' + '<option value="#three">Three</option>' + '<option value="#four">Four</option>' + '</select>';
         generatedHtml = this.multiWithCurrent.responsiveMenu(this.options).data("responsiveMenu").select.parent().html();
+        return expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated);
+      });
+    });
+    return describe("with label set", function() {
+      return it("should render select with label", function() {
+        var a, generatedHtml, options, shouldBeGenerated;
+
+        options = {
+          switchWidth: 555,
+          appendTo: "#dummy",
+          label: "Menu"
+        };
+        shouldBeGenerated = '<select class="responsive-select-menu">' + '<option value="#no-redirect">Menu</option>' + '<option value="#one">One</option>' + '<option value="#two">Two</option>' + '<option value="#three">Three</option>' + '<option value="#four">Four</option></select>';
+        a = this.one.responsiveMenu(options).data("responsiveMenu");
+        generatedHtml = a.select.parent().html();
         return expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated);
       });
     });
