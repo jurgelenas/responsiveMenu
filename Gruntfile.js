@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     uglify: {
       responsiveMenu: {
         files: {
-          'js/jQuery.responsiveMenu.min.js': ['js/jQuery.responsiveMenu.js'],
+          'js/jQuery.responsiveMenu.min.js': ['dist/jQuery.responsiveMenu.js'],
         },
         options: {
           banner : '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
@@ -19,8 +19,8 @@ module.exports = function(grunt) {
     },
     coffee : {
       plugin : {
-        src  : "js/<%= pkg.name %>.coffee",
-        dest : "js/<%= pkg.name %>.js"
+        src  : "src/<%= pkg.name %>.coffee",
+        dest : "dist/<%= pkg.name %>.js"
       },
       specs : {
         files: [{
@@ -42,15 +42,15 @@ module.exports = function(grunt) {
       }
     },
     jasmine : {
-      src     : ['js/libs/**/*.js', 'js/*[^(min)].js', 'spec/javascripts/libs/**/*.js'],
+      src     : ['vendor/*.js', 'spec/javascripts/libs/**/*.js', 'dist/*[^(min)].js'],
       options : {
         specs   : 'spec/javascripts/**/*.js',
-        helpers : 'spec/javascripts/helpers/**/*.js',
+        helpers : 'spec/javascripts/helpers/**/*.js'
       }
     },
     watch : {
       files: [
-        'js/jQuery.responsiveMenu.coffee', 
+        'src/jQuery.responsiveMenu.coffee', 
         'spec/coffeescripts/*.coffee', 
         'spec/coffeescripts/helpers/*.coffee'
       ],

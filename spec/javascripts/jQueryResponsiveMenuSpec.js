@@ -29,7 +29,7 @@
         }
       });
     });
-    describe("plugin options behavior", function() {
+    return describe("plugin options behavior", function() {
       it("should be available on the jQuery object", function() {
         return expect($.fn.responsiveMenu).toBeDefined();
       });
@@ -60,99 +60,122 @@
         return expect(plugin.options.manualMediaQueries).toBe(options.manualMediaQueries);
       });
     });
-    describe("manualMediaQueries", function() {
-      describe("when it is set to false", function() {
-        beforeEach(function() {
-          return this.plugin = this.one.responsiveMenu(this.options).data("responsiveMenu");
-        });
-        it("should trigger onResize method", function() {
-          spyOn(this.plugin, 'onResize');
-          $(window).trigger('resize');
-          return expect(this.plugin.onResize).toHaveBeenCalled();
-        });
-        it("should hide select menu and show actual menu when window width is wider than switchWidth", function() {
-          var fakeEvent;
-
-          fakeEvent = {
-            width: function() {
-              return 600;
-            }
-          };
-          this.plugin.onResize(fakeEvent);
-          expect(this.one).toBeVisible();
-          return expect($('#dummy select')).toBeHidden();
-        });
-        return it("should show select menu and hide an actual menu when window width is narrower than switchWidth", function() {
-          var fakeEvent;
-
-          fakeEvent = {
-            width: function() {
-              return 500;
-            }
-          };
-          this.plugin.onResize(fakeEvent);
-          expect(this.one).toBeHidden();
-          return expect($('#dummy select')).toBeVisible();
-        });
-      });
-      return describe("when it is set to true", function() {
-        beforeEach(function() {
-          var options;
-
-          options = {
-            appendTo: "#dummy",
-            manualMediaQueries: true
-          };
-          return this.plugin = this.one.responsiveMenu(options).data("responsiveMenu");
-        });
-        return it("shouldn't change visibility of menus", function() {
-          spyOn(this.plugin, 'onResize');
-          $(window).trigger('resize');
-          return expect(this.plugin.onResize).not.toHaveBeenCalled();
-        });
-      });
-    });
-    describe("with one level menu", function() {
-      it("should generate correct html tree", function() {
-        var a, generatedHtml, shouldBeGenerated;
-
-        shouldBeGenerated = '<select class="responsive-select-menu">' + '<option value="#one">One</option><option value="#two">Two</option>' + '<option value="#three">Three</option>' + '<option value="#four">Four</option></select>';
-        a = this.one.responsiveMenu(this.options).data("responsiveMenu");
-        generatedHtml = a.select.parent().html();
-        return expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated);
-      });
-      return it("should set a selected on current page item", function() {
-        var generatedHtml, shouldBeGenerated;
-
-        loadFixtures('oneLevelMenuWithCurrent.html');
-        this.withCurrent = $('#one-level-menu-with-current');
-        shouldBeGenerated = '<select class="responsive-select-menu">' + '<option value="#one">One</option>' + '<option value="#two" selected="selected">Two</option>' + '<option value="#three">Three</option>' + '<option value="#four">Four</option></select>';
-        generatedHtml = this.withCurrent.responsiveMenu(this.options).data("responsiveMenu").select.parent().html();
-        return expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated);
-      });
-    });
-    return describe("with multi-level menu", function() {
-      beforeEach(function() {
-        loadFixtures("multiLevelMenu.html");
-        this.multi = $("#multi-level-menu");
-        loadFixtures("multiLevelMenuWithCurrent.html");
-        return this.multiWithCurrent = $("#multi-level-with-current-menu");
-      });
-      it("should generate corrent html tree", function() {
-        var generatedHtml, shouldBeGenerated;
-
-        shouldBeGenerated = '<select class="responsive-select-menu">' + '<option value="#one">One</option><option value="#two">Two</option>' + '<option value="#sub-one">--Sub-one</option>' + '<option value="#sub-sub-one">----Sub-Sub-one</option>' + '<option value="#sub-sub-two">----Sub-Sub-two</option>' + '<option value="#sub-two">--Sub-two</option>' + '<option value="#three">Three</option>' + '<option value="#four">Four</option>' + '</select>';
-        generatedHtml = this.multi.responsiveMenu(this.options).data("responsiveMenu").select.parent().html();
-        return expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated);
-      });
-      return it("should correctly set in select menu current page item on multilevel menu", function() {
-        var generatedHtml, shouldBeGenerated;
-
-        shouldBeGenerated = '<select class="responsive-select-menu">' + '<option value="#one">One</option><option value="#two">Two</option>' + '<option value="#sub-one">--Sub-one</option>' + '<option value="#sub-sub-one">----Sub-Sub-one</option>' + '<option value="#sub-sub-two" selected="selected">----Sub-Sub-two</option>' + '<option value="#sub-two">--Sub-two</option>' + '<option value="#three">Three</option>' + '<option value="#four">Four</option>' + '</select>';
-        generatedHtml = this.multiWithCurrent.responsiveMenu(this.options).data("responsiveMenu").select.parent().html();
-        return expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated);
-      });
-    });
   });
+
+  /*
+    describe "manualMediaQueries", ->
+      describe "when it is set to false", ->
+        beforeEach ->
+          @plugin = @one.responsiveMenu(@options).data("responsiveMenu")
+  
+        it "should trigger onResize method", ->
+          spyOn(@plugin, 'onResize')
+  
+          $(window).trigger('resize')
+  
+          expect(@plugin.onResize).toHaveBeenCalled()
+  
+        it "should hide select menu and show actual menu when window width is wider than switchWidth", ->
+          fakeEvent =
+            width: ()->
+              600
+  
+          @plugin.onResize(fakeEvent)
+  
+          expect(@one).toBeVisible()
+          expect($('#dummy select')).toBeHidden()
+  
+        it "should show select menu and hide an actual menu when window width is narrower than switchWidth", ->
+          fakeEvent =
+            width: ()->
+              500
+  
+          @plugin.onResize(fakeEvent)
+  
+          expect(@one).toBeHidden()
+          expect($('#dummy select')).toBeVisible()
+  
+      describe "when it is set to true", ->
+        beforeEach ->
+          options =
+            appendTo: "#dummy"
+            manualMediaQueries: true
+          @plugin = @one.responsiveMenu(options).data("responsiveMenu")
+  
+        it "shouldn't change visibility of menus", ->
+          spyOn(@plugin, 'onResize')
+  
+          $(window).trigger('resize')
+  
+          expect(@plugin.onResize).not.toHaveBeenCalled()
+  
+  
+    describe "with one level menu", ->
+      it "should generate correct html tree", ->
+        shouldBeGenerated = '<select class="responsive-select-menu">'+
+          '<option value="#one">One</option><option value="#two">Two</option>'+
+          '<option value="#three">Three</option>'+
+          '<option value="#four">Four</option></select>'
+  
+        a = @one.responsiveMenu(@options).data("responsiveMenu")
+  
+        generatedHtml = a.select.parent().html()
+  
+        expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated)
+  
+      it "should set a selected on current page item", ->
+        loadFixtures 'oneLevelMenuWithCurrent.html'
+        @withCurrent = $('#one-level-menu-with-current')
+  
+        shouldBeGenerated = '<select class="responsive-select-menu">'+
+          '<option value="#one">One</option>'+
+          '<option value="#two" selected="selected">Two</option>'+
+          '<option value="#three">Three</option>'+
+          '<option value="#four">Four</option></select>'
+  
+        generatedHtml = @withCurrent.responsiveMenu(@options).data("responsiveMenu").select.parent().html()
+  
+        expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated)
+  
+  
+    describe "with multi-level menu", ->
+      beforeEach ->
+        loadFixtures "multiLevelMenu.html"
+        @multi = $("#multi-level-menu")
+  
+        loadFixtures "multiLevelMenuWithCurrent.html"
+        @multiWithCurrent = $("#multi-level-with-current-menu")
+  
+      it "should generate corrent html tree", ->
+        shouldBeGenerated = '<select class="responsive-select-menu">'+
+          '<option value="#one">One</option><option value="#two">Two</option>'+
+          '<option value="#sub-one">--Sub-one</option>'+
+          '<option value="#sub-sub-one">----Sub-Sub-one</option>'+
+          '<option value="#sub-sub-two">----Sub-Sub-two</option>'+
+          '<option value="#sub-two">--Sub-two</option>'+
+          '<option value="#three">Three</option>'+
+          '<option value="#four">Four</option>'+
+          '</select>'
+  
+        generatedHtml = @multi.responsiveMenu(@options).data("responsiveMenu").select.parent().html()
+  
+        expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated)
+  
+      it "should correctly set in select menu current page item on multilevel menu", ->
+        shouldBeGenerated = '<select class="responsive-select-menu">'+
+          '<option value="#one">One</option><option value="#two">Two</option>'+
+          '<option value="#sub-one">--Sub-one</option>'+
+          '<option value="#sub-sub-one">----Sub-Sub-one</option>'+
+          '<option value="#sub-sub-two" selected="selected">----Sub-Sub-two</option>'+
+          '<option value="#sub-two">--Sub-two</option>'+
+          '<option value="#three">Three</option>'+
+          '<option value="#four">Four</option>'+
+          '</select>'
+        
+        generatedHtml = @multiWithCurrent.responsiveMenu(@options).data("responsiveMenu").select.parent().html()
+  
+        expect(generatedHtml).toBeHtmlStuctureEqual(shouldBeGenerated)
+  */
+
 
 }).call(this);
