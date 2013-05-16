@@ -77,16 +77,16 @@ do ($ = jQuery, window, document) ->
       menu
 
     createOption: (title, url, current, level) ->
-      visualTab = @repeatString(@options.visualTab, level)
+      visualTab = @repeatPattern(@options.visualTab, level)
       selected = ''
       selected = ' selected="selected"' if current
 
       "<option value=\"#{url}\"#{selected}>#{visualTab}#{title}</option>"
 
-    repeatString: (pattern, count) ->
-      return '' if count < 1
+    repeatPattern: (pattern, count) ->
+      return '' if count <= 1
 
-      Array(count).join(pattern)
+      Array(count).join(pattern) + " "
 
     onResize: (e) =>
       if e.width() <= @options.switchWidth

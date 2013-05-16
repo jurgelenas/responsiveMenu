@@ -97,7 +97,7 @@
       ResponsiveMenu.prototype.createOption = function(title, url, current, level) {
         var selected, visualTab;
 
-        visualTab = this.repeatString(this.options.visualTab, level);
+        visualTab = this.repeatPattern(this.options.visualTab, level);
         selected = '';
         if (current) {
           selected = ' selected="selected"';
@@ -105,11 +105,11 @@
         return "<option value=\"" + url + "\"" + selected + ">" + visualTab + title + "</option>";
       };
 
-      ResponsiveMenu.prototype.repeatString = function(pattern, count) {
-        if (count < 1) {
+      ResponsiveMenu.prototype.repeatPattern = function(pattern, count) {
+        if (count <= 1) {
           return '';
         }
-        return Array(count).join(pattern);
+        return Array(count).join(pattern) + " ";
       };
 
       ResponsiveMenu.prototype.onResize = function(e) {
