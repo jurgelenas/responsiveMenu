@@ -47,6 +47,7 @@ There are many other different plugins to do this job, but I couldn't find anyth
 	<script>
 		$(function () {
 			$("#regular-menu").responsiveMenu({
+				// Default options
 				appendTo: "#here",
 				switchWidth: 768,
 				currentClass: "current",
@@ -62,6 +63,49 @@ There are many other different plugins to do this job, but I couldn't find anyth
 		});
 	</script>
 	```
+
+
+## Plugin Options
+
+* appendTo - (type: string/jQuery object) a valid jQuery selector, for example:
+  * string ```"#regular-menu"```
+  * jQuery object ```$("#regular-menu")```
+  * Default: Sibling to regular menu element (#regular-menu)
+* switchWidth - (type: integer) under this width plugin will hide regular menu and will show select menu instead
+	* default: 768
+* currentClass - (type: string) menuElement class primary used to determine current page
+	* HTML: ```<li class="current"><a href="/two">Two</a></li>```
+	* Default: "current"
+* maxDepth - (type: integer) Depth of navigation. If set, for example, maxDepth: 1 plugin will take only one level of menu
+	* default: null
+
+* manualMediaQueries - (type: boolean) If set to true, you will need to manually toggle between regular and select menus, for example:
+
+	```
+	/* desktop */
+	.responsive-select-menu { display: none }
+
+	/* mobile */
+	@media screen and (max-width: 768px) {
+	    .responsive-select-menu { display: block }
+	    #regular-menu { display: none }
+	}
+	```
+
+* visualTab - (type: string) it seperates child pages from parent pages
+
+	```
+	Parent
+	-- Child
+	-- Child
+	---- Subchild
+	---- Subchild
+	```
+
+* selectors - if you have a different html structure, you can set custom jQuery selectors:
+	* menuElement: 'li'
+	* menuAnchor: '> a'
+	* submenu: '> ul'
 
 
 ## Bug tracker
