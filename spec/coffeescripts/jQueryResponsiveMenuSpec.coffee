@@ -106,7 +106,8 @@ describe "jQuery.responsiveMenu", ->
   describe "with one level menu", ->
     it "should generate correct html tree", ->
       shouldBeGenerated = '<select class="responsive-select-menu">'+
-        '<option value="#one">One</option><option value="#two">Two</option>'+
+        '<option value="#one">One</option>'+
+        '<option value="#two">Two</option>'+
         '<option value="#three">Three</option>'+
         '<option value="#four">Four</option></select>'
 
@@ -141,7 +142,8 @@ describe "jQuery.responsiveMenu", ->
 
     it "should generate corrent html tree", ->
       shouldBeGenerated = '<select class="responsive-select-menu">'+
-        '<option value="#one">One</option><option value="#two">Two</option>'+
+        '<option value="#one">One</option>'+
+        '<option value="#two">Two</option>'+
         '<option value="#sub-one">-- Sub-one</option>'+
         '<option value="#sub-sub-one">---- Sub-Sub-one</option>'+
         '<option value="#sub-sub-two">---- Sub-Sub-two</option>'+
@@ -156,7 +158,8 @@ describe "jQuery.responsiveMenu", ->
 
     it "should correctly set in select menu current page item on multilevel menu", ->
       shouldBeGenerated = '<select class="responsive-select-menu">'+
-        '<option value="#one">One</option><option value="#two">Two</option>'+
+        '<option value="#one">One</option>'+
+        '<option value="#two">Two</option>'+
         '<option value="#sub-one">-- Sub-one</option>'+
         '<option value="#sub-sub-one">---- Sub-Sub-one</option>'+
         '<option value="#sub-sub-two" selected="selected">---- Sub-Sub-two</option>'+
