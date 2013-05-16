@@ -5,6 +5,16 @@ A responsive navigation jQuery plugin. It converts `<ul>` and `<ol>` menus to a 
 There are many other different plugins to do this job, but I couldn't find anything that suited my needs and I created my own. I discovered that I am using this plugin over and over again on my projects and I thought that It could be useful for somebody else and decided to open-source it.
 
 
+### Features:
+
+* Simple and easy to use
+* Unlimited levels of submenus
+* Variety of configuration options
+* Works in all major desktop and mobile browsers
+* Weighs only 1026 bytes minified and Gzip'ed
+* Free to use under the MIT license
+
+
 ## Bug tracker
 
 If you find a bug, please report it [on Gitgub!](https://github.com/jurgelenas/responsiveMenu/issues)
