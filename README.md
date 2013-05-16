@@ -12,6 +12,7 @@ There are many other different plugins to do this job, but I couldn't find anyth
 * Variety of configuration options
 * Works in all major desktop and mobile browsers
 * Weighs only 1026 bytes minified and Gzip'ed
+* Well tested (TDD)
 * Free to use under the MIT license
 
 
