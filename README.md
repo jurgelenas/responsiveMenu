@@ -15,6 +15,54 @@ There are many other different plugins to do this job, but I couldn't find anyth
 * Free to use under the MIT license
 
 
+## Usage
+
+1. Grab minified plugin version from `js/jQuery.responsiveMenu.min.js`
+2. Put it into the `<head>`
+
+	```
+	<script src="js/jQuery.responsiveMenu.min.js"></script>
+	```
+
+3. Add markup:
+
+	```
+	<ul id="regular-menu">
+	  <li><a href="/one">One</a></li>
+	  <li class="current"><a href="/two">Two</a></li>
+	  <li>
+	  	<a href="/three">Three</a>
+	  	<ul>
+	  		<li><a href="/sub-one">Sub One</a></li>
+	  		<li><a href="/sub-two">Sub Two</a></li>
+	  	</ul>
+	  </li>
+	  <li><a href="/four">Four</a></li>
+	</ul>
+	```
+4. Instantiate plugin:
+
+	```
+	<script>
+		$(function () {
+			$("#regular-menu").responsiveMenu({
+				appendTo: "#here",
+				switchWidth: 768,
+				currentClass: "current",
+				visualTab: "--",
+				maxDepth: null,
+				manualMediaQueries: false,
+				selectors: {
+				  menuElement: 'li',
+				  menuAnchor: '> a',
+				  submenu: '> ul'
+				}
+			});
+		});
+	</script>
+	```
+
+
 ## Bug tracker
 
 If you find a bug, please report it [on Gitgub!](https://github.com/jurgelenas/responsiveMenu/issues)
