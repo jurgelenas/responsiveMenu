@@ -113,7 +113,7 @@ There are many other different plugins to do this job, but I couldn't find anyth
 
 ## Bug tracker
 
-If you find a bug, please report it [on Gitgub!](https://github.com/jurgelenas/responsiveMenu/issues)
+If you find a bug, please report it [on Github!](https://github.com/jurgelenas/responsiveMenu/issues)
 
 
 ## Developer
