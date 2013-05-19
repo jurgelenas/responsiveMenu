@@ -1,6 +1,6 @@
 # jQuery.responsiveMenu
 
-A responsive navigation jQuery plugin. It converts `<ul>` and `<ol>` menus to a select dropdowns for small screen devices. It also automatically selects the current page and adds selected="selected" for that item.
+A responsive navigation jQuery plugin. It converts `<ul>` and `<ol>` menus to `<select>` dropdowns for small screen devices. It also automatically selects the current page and adds selected="selected" for that item.
 
 There are many other different plugins to do this job, but I couldn't find anything that suited my needs and I created my own. I discovered that I am using this plugin over and over again on my projects and I thought that It could be useful for somebody else and decided to open-source it.
 
@@ -10,7 +10,7 @@ There are many other different plugins to do this job, but I couldn't find anyth
 * Simple and easy to use
 * Unlimited levels of submenus
 * Variety of configuration options
-* Works in all major desktop and mobile browsers
+* Works on all major desktop and mobile browsers
 * Weighs only 1098 bytes minified and Gzip'ed
 * Well tested (TDD)
 * Free to use under the MIT license
