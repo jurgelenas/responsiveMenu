@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jurgelenas/responsiveMenu.png?branch=master)](https://travis-ci.org/jurgelenas/responsiveMenu)
+
 # jQuery.responsiveMenu
 
 A responsive navigation jQuery plugin. It converts `<ul>` and `<ol>` menus to `<select>` dropdowns for small screen devices. It also automatically selects the current page and adds selected="selected" for that item.
