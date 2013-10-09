@@ -3,7 +3,6 @@
 
   (function($, window, document) {
     var ResponsiveMenu, defaults;
-
     defaults = {
       appendTo: null,
       switchWidth: 768,
@@ -30,7 +29,6 @@
 
       ResponsiveMenu.prototype.init = function() {
         var _this = this;
-
         this.select = this.createSelect();
         if (this.options.appendTo === null) {
           this.select.appendTo(this.element.parent());
@@ -50,7 +48,6 @@
       ResponsiveMenu.prototype.createSelect = function() {
         var $select, addOptionsRecursive, menuTree, selectOptions,
           _this = this;
-
         $select = $('<select class="responsive-select-menu" />');
         menuTree = this.generateMenuTree(this.element);
         selectOptions = '';
@@ -76,11 +73,9 @@
       ResponsiveMenu.prototype.generateMenuTree = function(el) {
         var menu,
           _this = this;
-
         menu = [];
         $(el).children(this.options.selectors.menuElement).each(function(index, value) {
           var $menuAnchor, $menuLi, $submenu;
-
           $menuLi = $(value);
           $menuAnchor = $($menuLi).find(_this.options.selectors.menuAnchor);
           $submenu = $menuLi.find(_this.options.selectors.submenu);
@@ -96,7 +91,6 @@
 
       ResponsiveMenu.prototype.createOption = function(title, url, current, level) {
         var selected, visualTab;
-
         visualTab = this.repeatPattern(this.options.visualTab, level);
         selected = '';
         if (current) {
