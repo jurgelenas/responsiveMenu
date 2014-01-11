@@ -1,7 +1,7 @@
 {
   "name"            : "jQuery.responsiveMenu",
   "title"           : "jQuery.responsiveMenu",
-  "version"         : "0.1.1",
+  "version"         : "0.1.2",
   "homepage"        : "https://github.com/jurgelenas/responsiveMenu",
   "author"          : {
     "name"  : "Julius Jurgelėnas",
@@ -21,11 +21,11 @@
     "type": "MIT"
   }],
   "devDependencies" : {
-    "grunt"                : "0.4.1",
+    "grunt"                : "0.4.2",
     "grunt-contrib-watch"  : "0.5.3",
-    "grunt-contrib-coffee" : "0.7.0",
+    "grunt-contrib-coffee" : "0.8.0",
     "grunt-contrib-jasmine": "0.5.2",
-    "grunt-contrib-uglify" : "0.2.4",
+    "grunt-contrib-uglify" : "0.2.7",
     "grunt-growl"          : "0.1.5"
   },
   "scripts": {
